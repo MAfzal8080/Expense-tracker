@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<h2 class="heading">Expense Tracker</h2>
+
+<div class="container">
+    <h2>Balance</h2>
+    <h1 id="Balance">₹{{profile.balance}}</h1>
+    <div class="expContainer">
+        <div class='amt'>
+            <legend>Income</legend>
+            <span class="moneyPlus">+₹{{profile.income}} </span>
+        </div>
+        <div class='amt'>
+            <legend>Expense</legend>
+            <span class="moneyMinus">-₹{{profile.expenses}}</span>
+        </div>
+    </div>
+
+    <h3>Add Transactions</h3>
+    {% if error %}
+    <span class="error">{{error}}</span>
+    {% endif %}
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <div class="form-control">
+            <label for="text">Text</label> <br>
+            <input type="text" id="text" name="text" placeholder="Enter text..." >
+        </div>
+
+        <div class="form-control">
+            <label for="amount">Amount</label> <br>
+            <input type="number" id="amount" name="amount" placeholder="Enter amount..." >
+        </div>
+
+        <div class="form-control">
+            <label for="type">Expense type</label>
+            <select id="expense_type" name="expense_type">
+                <option>-- select expense type --</option>
+                <option value="Negative">Debit</option>
+                <option value="Positive">Credit</option>
+            </select>
+        </div>
+
+        <button class="submit-btn" type="submit" >Add transaction</button>
+    </form>
+
+    <h3>History</h3>
+    <ul class="list">
+
+    {% if message %}
+        <span>{{message}}</span>
+    {% endif %}
+    
+    {% for expense in expenses %}
+    {% if expense.expense_type == 'Negative' %}
+    <li class="elist">
+        <span>{{expense.name}}</span><span class="minus">-₹{{expense.amount}} <a href="deleteData/{{expense.id}}" class="delete-button">X</a></span>
+    </li>
+    {% else %}
+    <li class="elist">
+        <span>{{expense.name}}</span><span class="plus">+₹{{expense.amount}} <a href="deleteData/{{expense.id}}" class="delete-button">X</a></span>
+    </li>
+    {% endif %}
+    {% endfor %}
+    </ul> 
+
+</div>
+
+{% endblock %}

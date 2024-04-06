@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django expense tracker</title>
+    <style>
+        body{
+            background-color: #2F363F;
+            font-family: cursive;
+        }
+        .heading{
+            text-align: center;
+            font-style: Calibri;
+        }
+        .container {
+            width: 400px;
+            margin: auto;
+            padding: 10px;
+            color: white;
+        }
+        .expContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .moneyPlus{
+            color: green;
+            margin-top: 10px;
+        }
+        .moneyMinus{
+            color: red;
+            margin-top: 10px;
+        }
+        h2{  
+            color: white;
+        }
+        .submit-btn{
+            background-color: blue;
+            color: white;
+            height: 40px;
+            width: 80%;
+            border-radius: 5px;
+            border: 2px solid blue;
+        }
+        #form{
+            padding: 10px;
+            text-align: center;
+        }
+        .amt{
+            width: 50%;
+            height: 110px;
+            color: #DAE0E2;
+            font-weight: bold;
+            background-color: #192A56;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-control{
+            margin-bottom: 10px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input{
+            width: 80%;
+            height: 30px;
+            font-size: 18px;
+            -moz-appearance: textfield;
+        }
+        select{
+            height: 30px;
+            font: 18px
+        }
+        .minus{
+            color: red;
+            font-weight: bold;
+        }
+        .plus{
+            color: green;
+            font-weight: bold;
+        }
+        .elist{
+            height: 25px;
+            width: 80%;
+            background-color: #f1f1f1;
+            padding: 5px 3px;
+            list-style-type: none;
+            margin-bottom: 5px;
+            color: black;
+            border: 1px solid #192A56;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #192A56;
+        }
+        .delete-button{
+            float: right;
+            margin-left: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        h3{
+            border-bottom: solid grey;
+        }
+        .error{
+            color: red;
+            height: 30px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    {% block start %}
+
+
+    
+    {% endblock %}
+</body>
+</html>
