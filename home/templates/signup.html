@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block start %}
+
+<div class="container2">
+<div class="circle rightCircle"></div>
+<div class="circle leftCircle"></div>
+  <div class="box">
+    <h2 class="signUpHeading">Sign Up</h2>
+    <form class="form" method="POST" action="/register">
+      {% csrf_token %}
+      <div class="inputBox"><label for="fname">First name</label><input type="text" name="fname" required /> </div>
+      <div class="inputBox"><label for="lname">Last name</label><input type="text" name="lname" required /> </div>
+      <div class="inputBox"><label for="lname">Username</label><input type="text" name="username" required /> </div>
+      {% comment %} <div class="inputBox"><label for="lname">Income</label><input type="number" name="income" required /> </div> {% endcomment %}
+      <div class="inputBox"><label for="email">E-mail</label><input type="text" name="email" required /> </div>
+      <div class="inputBox">
+        <label for="password">Password</label><input type="password" name="password" required /> 
+      </div>
+      <div class="inputBox"><label for="cpassword">Confirm password</label><input type="text" name="cpassword" required /> </div>
+      <div class="inputBox">
+        <input type="submit" value="Sign Up" />
+      </div>
+    </form>
+  </div>
+</div>
+
+</div> 
+
+{% endblock %}

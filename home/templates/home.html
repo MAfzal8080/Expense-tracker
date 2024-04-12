@@ -2,11 +2,37 @@
 
 {% block start %}
 
-<h2 class="heading">Expense Tracker</h2>
+<div class="navbar">
+    <h2 class="heading">Expense Tracker</h2>    
+    <a href="/logout" class="logout-btn">Logout</a>
+</div>
 
 <div class="container">
     <h2>Balance</h2>
-    <h1 id="Balance">₹{{profile.balance}}</h1>
+    <span id="Balance">₹{{profile.balance}}</span>
+    <button class='income' onClick=showDialog()>Update income</button>
+    <dialog id="dialog">
+        <form class"form" action="/updateIncome" method="POST">
+            {% csrf_token %}
+            <span>Enter your income: </span><input type="number" name="amount" min="0"><br/>
+            <button onclick=closeDialog() type="submit">Update Income</button>
+        </form>
+        <button onclick=closeDialog()>Close</button>
+        <button id="close" onClick=closeDialog()>close</button>
+    </dialog>
+    <script>
+        const dialogElem = document.getElementById("dialog");
+        {% comment %} const showBtn = document.querySelector(".show"); {% endcomment %}
+        const closeBtn = document.getElementById("close");
+
+        function showDialog(){
+            dialogElem.showModal();
+        }
+        function closeDialog(){
+            closeBtn.close();
+        }
+
+    </script>
     <div class="expContainer">
         <div class='amt'>
             <legend>Income</legend>
