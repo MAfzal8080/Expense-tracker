@@ -7,8 +7,6 @@ from django.contrib.auth import  authenticate, login, logout
 from .models import *
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 @login_required(login_url='/login')
 def home(request):
     profile = Profile.objects.filter(user = request.user).first()
@@ -41,6 +39,7 @@ def home(request):
         context = {'profile': profile, 'expenses': expenses}
     return render(request, 'home.html', context)
 
+@login_required(login_url='/login')
 def deleteData(request, id):
     data = Expense.objects.get(id=id)
     profile = Profile.objects.filter(user = request.user).first()
@@ -65,11 +64,9 @@ def register(request):
         password1 = request.POST['password']
         password2 = request.POST['cpassword']
         
-        # Checking that passwords match
         if password1 != password2:
             return HttpResponse('Passwords do not match' + ', please try again.')
 
-        # Attempt to create new user
         try:
             myuser = User.objects.create_user(username=username, email=email ,password=password1)
             myuser.first_name = fname
@@ -81,6 +78,7 @@ def register(request):
         except IntegrityError as e:
             return HttpResponse("Username or Email already exists")  
 
+@login_required(login_url='/login')
 def handleLogout(request):
     logout(request)
     return redirect('/')  
@@ -98,6 +96,7 @@ def handleLogin(request):
     else:
         return render(request,'login.html') 
 
+@login_required(login_url='/login') 
 def updateIncome(request):
     if request.method=='POST':
         income = request.POST['amount'];

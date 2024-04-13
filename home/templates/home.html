@@ -17,12 +17,9 @@
             <span>Enter your income: </span><input type="number" name="amount" min="0"><br/>
             <button onclick=closeDialog() type="submit">Update Income</button>
         </form>
-        <button onclick=closeDialog()>Close</button>
-        <button id="close" onClick=closeDialog()>close</button>
     </dialog>
     <script>
         const dialogElem = document.getElementById("dialog");
-        {% comment %} const showBtn = document.querySelector(".show"); {% endcomment %}
         const closeBtn = document.getElementById("close");
 
         function showDialog(){

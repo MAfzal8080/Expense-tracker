@@ -124,12 +124,11 @@
         .container2{
             display: flex;
             justify-content: center;
-            {% comment %} algin-items: center; {% endcomment %}
-            height: 300px;
+            height: auto;
         }
         .box{
-            width: 55vh;
-            height: 26vw;
+            width: 26vw;
+            height: auto;
             color: white;
             background: rgb(5 0 255 / 27%);
             box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -159,8 +158,8 @@
             border-radius: 4rem;
             position: absolute;
         }
-        .rightCircle{ left: 32%; top: 12%; z-index: -1; background-color: red;}
-        .leftCircle{ right:  32%; bottom: 25%; z-index: -1; background-color: yellow;}
+        .rightCircle{ left: 32%; top: 13%; z-index: -1; background-color: red;}
+        .leftCircle{ align-self: flex-end; right: 32%; z-index: -1; background-color: yellow;}
         .income{
             background-color: black;
             color: white;
