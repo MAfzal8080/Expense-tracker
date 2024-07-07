@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block start %}
 
 <div class="container2">
-<div class="circle rightCircle"></div>
-<div class="circle leftCircle"></div>
+{% comment %} <div class="circle rightCircle"></div> {% endcomment %}
+{% comment %} <div class="circle leftCircle"></div> {% endcomment %}
   <div class="box">
     <h2 class="signUpHeading">Sign Up</h2>
     <form class="form" method="POST" action="/register">
@@ -16,7 +16,10 @@
       </div>
       <div class="inputBox"><label for="cpassword">Confirm password</label><input type="text" name="cpassword" required /> </div>
       <div class="inputBox">
-        <input type="submit" value="Sign Up" />
+        <input type="submit" class="w-100" value="Sign Up" />
+      </div>
+      <div class="inputBox">
+        <a href="/login" class="signup">Already have an account? Log In</a>
       </div>
     </form>
   </div>

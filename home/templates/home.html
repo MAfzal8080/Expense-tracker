@@ -2,20 +2,22 @@
 
 {% block start %}
 
-<div class="navbar">
+<div class="navBar w-100">
     <h2 class="heading">Expense Tracker</h2>    
     <a href="/logout" class="logout-btn">Logout</a>
 </div>
 
-<div class="container">
+<div class="container empbox">
     <h2>Balance</h2>
     <span id="Balance">₹{{profile.balance}}</span>
-    <button class='income' onClick=showDialog()>Update income</button>
-    <dialog id="dialog">
+    <button class='income' onClick=showDialog()><i class="fa-solid fa-pen-to-square text-white"></i></button>
+    
+    <dialog id="dialog" class="bg-dark rounded-3 text-white">
         <form class"form" action="/updateIncome" method="POST">
             {% csrf_token %}
-            <span>Enter your income: </span><input type="number" name="amount" min="0"><br/>
-            <button onclick=closeDialog() type="submit">Update Income</button>
+            <span>Enter your income: </span><input type="number" class="form-control" name="amount" min="0"><br/>
+            <button onclick=closeDialog() type="submit" class="btn btn-primary">Update Income</button>
+            <button onclick=closeDialog() type="button" class="btn btn-danger">Close</button>
         </form>
     </dialog>
     <script>
@@ -26,11 +28,11 @@
             dialogElem.showModal();
         }
         function closeDialog(){
-            closeBtn.close();
+            dialogElem.close();
         }
 
     </script>
-    <div class="expContainer">
+    <div class="expContainer w-100">
         <div class='amt'>
             <legend>Income</legend>
             <span class="moneyPlus">+₹{{profile.income}} </span>
@@ -47,17 +49,17 @@
     {% endif %}
     <form id="form" method="POST">
         {% csrf_token %}
-        <div class="form-control">
+        <div class="formControl">
             <label for="text">Text</label> <br>
-            <input type="text" id="text" name="text" placeholder="Enter text..." >
+            <input type="text" class="form-control" id="text" name="text" placeholder="Enter text..." >
         </div>
 
-        <div class="form-control">
+        <div class="formControl">
             <label for="amount">Amount</label> <br>
-            <input type="number" id="amount" name="amount" placeholder="Enter amount..." >
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount..." >
         </div>
 
-        <div class="form-control">
+        <div class="formControl">
             <label for="type">Expense type</label>
             <select id="expense_type" name="expense_type">
                 <option>-- select expense type --</option>
